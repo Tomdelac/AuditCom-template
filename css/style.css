@@ -1,30 +1,19 @@
-/* --- Variables --- */
+/* --- VARIABLES --- */
 :root {
     --blue-light: #51bbfe;
     --yellow: #F4E76E;
     --blue-dark: #373f51;
     --orange: #FF5E3A;
     --white: #ffffff;
-
-}
-h1,
-h2,
-h3 {
-    font-family: 'Agrandir-GrandHeavy', Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    /* Souvent nécessaire pour les polices "Heavy" pour coller à Figma */
 }
 
+/* --- POLICES ET BASES --- */
 @font-face {
     font-family: 'Agrandir-GrandHeavy';
     src: url('../src/fonts/Agrandir-GrandHeavy.otf') format('opentype');
     font-weight: 900;
-    /* Heavy */
     font-style: normal;
 }
-
-
 
 body {
     margin: 0;
@@ -33,10 +22,15 @@ body {
     color: var(--blue-dark);
 }
 
+h1, h2, h3 {
+    font-family: 'Agrandir-GrandHeavy', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
 
+/* --- HERO SECTION --- */
 .hero {
     height: 100vh;
-    /* Prend toute la hauteur de l'écran */
     background-color: var(--blue-dark);
     display: flex;
     justify-content: center;
@@ -54,154 +48,32 @@ body {
 .hero h1 {
     color: var(--yellow);
     font-size: 2.5rem;
-    text-transform: uppercase;
-    margin-bottom: 40px;
     line-height: 1.2;
+    margin-bottom: 40px;
 }
 
 .hero h1 span {
     color: var(--white);
 }
 
-
-
 /* --- ANIMATION DU BALLON --- */
 .ballon-wrapper {
     margin: 40px 0;
     display: flex;
     justify-content: center;
-    /* Aligne le contenu à droite du conteneur */
-    /*  padding-right: 10%;        /* Ajuste ce pourcentage pour plus ou moins de décalage */
 }
 
 .spinning-ball {
     width: 200px;
-    /* Ajuste la taille selon ton besoin */
     height: auto;
     animation: rotateBall 10s linear infinite;
 }
 
 @keyframes rotateBall {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-
-  /* --- SECTION STATS --- */
-#stats-section {
-    background-color: var(--blue-light);
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.cta-wrapper {
-    margin-bottom: 80px;
-}
-
-.main-cta {
-    background-color: var(--orange);
-    color: var(--white);
-    text-decoration: none;
-    font-family: 'Agrandir-GrandHeavy', sans-serif;
-    padding: 20px 40px;
-    border-radius: 50px;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-.main-cta:hover {
-    transform: scale(1.05);
-}
-
-.stats-container {
-    max-width: 1000px;
-    width: 100%;
-}
-
-.section-title {
-    color: var(--blue-dark);
-    margin-bottom: 50px;
-}
-
-/* Bulles d'infos */
-.stat-card {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.stat-card.reverse {
-    flex-direction: row-reverse;
-}
-
-.stat-number {
-    background-color: var(--yellow);
-    width: 180px;
-    height: 180px;
-    min-width: 180px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Agrandir-GrandHeavy', sans-serif;
-    font-size: 3rem;
-    color: var(--blue-dark);
-    text-align: center;
-    line-height: 1;
-}
-
-.stat-number span {
-    font-size: 1rem;
-    display: block;
-}
-
-.stat-text {
-    background-color: var(--blue-dark);
-    color: var(--white);
-    padding: 30px;
-    border-radius: 30px;
-    flex-grow: 1;
-}
-
-.stat-text p {
-    margin: 0 0 10px 0;
-    line-height: 1.4;
-}
-
-.stat-text strong {
-    color: var(--yellow);
-    font-size: 1.2rem;
-    text-transform: uppercase;
-}
-
-/* Responsive pour Mobile */
-@media (max-width: 768px) {
-    .stat-card, .stat-card.reverse {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .stat-number {
-        width: 140px;
-        height: 140px;
-        min-width: 140px;
-        font-size: 2rem;
-    }
-    
-
-
-/* --- LE TRIANGLE (SCROLL) --- */
 .scroll-trigger {
     position: absolute;
     bottom: 30px;
@@ -215,283 +87,216 @@ body {
     transform: translateX(-50%) translateY(10px);
 }
 
-/* --- SECTION SUIVANTE --- */
+/* --- SECTION STATS (INFOS BULLES) --- */
 #stats-section {
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
-    padding: 60px 20px;
 }
 
+.cta-wrapper {
+    margin-bottom: 80px;
+}
 
+.main-cta {
+    background-color: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Agrandir-GrandHeavy', sans-serif;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
 
-/* Conteneur du formulaire */
+.main-cta:hover {
+    transform: scale(1.05);
+}
+
+.stats-container {
+    max-width: 1100px;
+    width: 100%;
+}
+
+.stat-card {
+    display: flex;
+    align-items: stretch; /* Même hauteur pour le rond et le texte */
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.stat-card.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Le rond (Bulle) */
+.stat-number {
+    background-color: var(--yellow);
+    flex: 0 0 calc(2.5 / 12 * 100%);
+    min-height: 180px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Agrandir-GrandHeavy', sans-serif;
+    font-size: 2.5rem;
+    color: var(--blue-dark);
+    text-align: center;
+    line-height: 1;
+    z-index: 2;
+}
+
+.stat-number span {
+    font-size: 0.9rem;
+    display: block;
+}
+
+/* L'info bulle (Texte) */
+.stat-text {
+    background-color: var(--blue-dark);
+    color: var(--white);
+    flex: 0 0 calc(7.5 / 12 * 100%);
+    padding: 40px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -40px; /* Chevauchement */
+}
+
+.stat-card.reverse .stat-text {
+    margin-left: 0;
+    margin-right: -40px; /* Chevauchement inverse */
+}
+
+.stat-text strong {
+    color: var(--yellow);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.stat-text p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* --- FORMULAIRE --- */
 .form-container {
-    background-color: #f4e76e;
+    background-color: var(--yellow);
     border-radius: 20px;
-    padding: 30px;
+    padding: 40px;
     max-width: 500px;
     width: 100%;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    margin: 0 auto;
+    margin: 60px auto;
 }
 
-/* Titre principal */
 .form-title {
-    font-size: 3rem;
-    font-weight: 900;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    text-align: left;
+    font-size: 2.5rem;
+    color: var(--blue-dark);
+    margin-bottom: 10px;
 }
 
-/* Sous-titre */
 .form-subtitle {
-    font-size: 1 rem;
     font-weight: 600;
-    color: #000;
     margin-bottom: 30px;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
-/* Groupe de champs */
 .form-group {
-    margin-right: 25px;
-    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
-/* Labels */
-.form-container label {
+.form-group label {
     display: block;
-    font-size: 1 rem;
     font-weight: 700;
-    color: #2c3e50;
     margin-bottom: 8px;
 }
 
-/* Champs de texte et email */
 .form-container input[type="text"],
 .form-container input[type="email"] {
     width: 100%;
     padding: 12px;
     border: none;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.5);
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-sizing: border-box;
 }
 
-.form-container input[type="text"]:focus,
-.form-container input[type="email"]:focus {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-/* Groupe checkbox */
 .checkbox-group {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 30px 0;
     gap: 10px;
+    margin: 25px 0;
 }
 
-.checkbox-group label {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0;
-    cursor: pointer;
-}
-
-.form-container input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    accent-color: #2c3e50;
-}
-
-/* Bouton de soumission */
 .submit-btn {
     width: 100%;
-    padding: 15px;
-    background-color: #3d4d5c;
+    padding: 18px;
+    background-color: var(--blue-dark);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 50px;
     font-size: 1.1rem;
     font-weight: 700;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 0 var(--orange);
 }
 
 .submit-btn:hover {
-    background-color: #2c3e50;
-    transform: translateY(-2px);
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 var(--orange);
 }
 
 .submit-btn:active {
-    transform: translateY(0);
+    transform: translateY(6px);
+    box-shadow: 0 0 0 var(--orange);
 }
 
-/* Responsive */
-@media (max-width: 500px) {
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    /* Stats */
+    .stat-card, .stat-card.reverse {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 80px; /* Espace entre les duos */
+    }
+
+    .stat-number {
+        flex: none;
+        width: 150px;
+        height: 150px;
+        min-height: 150px;
+        margin-bottom: 15px; /* Petit espace sous le rond */
+    }
+
+    .stat-text {
+        flex: none;
+        width: 100%;
+        margin: 0 !important;
+        padding: 30px 20px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Formulaire */
     .form-container {
         padding: 30px 20px;
+        width: 90%;
     }
-
-    .form-title {
-        font-size: 2.2rem;
-    }
-
-    .form-subtitle {
-        font-size: 1rem;
-    }
-
-    HEAD .submit-btn {
-        background-color: var(--yellow);
-        color: var(--blue-dark);
-        border: none;
-        padding: 16px 32px;
-        font-size: 1rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 0 var(--orange);
-    }
-
-    .submit-btn:hover {
-        transform: translateY(4px);
-        box-shadow: 0 4px 0 var(--orange);
-    }
-
-    .submit-btn:active {
-        transform: translateY(8px);
-        box-shadow: 0 0 0 var(--orange);
-       
-    }
-
     
-
-    /* Conteneur du formulaire */
-    .form-container {
-        background-color: #f4e76e;
-        border-radius: 20px;
-        padding: 30px;
-        max-width: 500px;
-        width: 100%;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        margin: 0 auto;
-    }
-
-    /* Titre principal */
     .form-title {
-        font-size: 3rem;
-        font-weight: 900;
-        color: #2c3e50;
-        margin-bottom: 20px;
-        text-align: left;
+        font-size: 2rem;
     }
-
-    /* Sous-titre */
-    .form-subtitle {
-        font-size: 1 rem;
-        font-weight: 600;
-        color: #000;
-        margin-bottom: 30px;
-        line-height: 1.5;
-    }
-
-    /* Groupe de champs */
-    .form-group {
-        margin-right: 25px;
-        margin-top: 25px;
-    }
-
-    /* Labels */
-    .form-container label {
-        display: block;
-        font-size: 1 rem;
-        font-weight: 700;
-        color: #2c3e50;
-        margin-bottom: 8px;
-    }
-
-    /* Champs de texte et email */
-    .form-container input[type="text"],
-    .form-container input[type="email"] {
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 8px;
-        background-color: rgba(255, 255, 255, 0.5);
-        font-size: 1rem;
-        transition: background-color 0.3s;
-    }
-
-    .form-container input[type="text"]:focus,
-    .form-container input[type="email"]:focus {
-        outline: none;
-        background-color: rgba(255, 255, 255, 0.8);
-    }
-
-    /* Groupe checkbox */
-    .checkbox-group {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 30px 0;
-        gap: 10px;
-    }
-
-    .checkbox-group label {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 0;
-        cursor: pointer;
-    }
-
-    .form-container input[type="checkbox"] {
-        width: 24px;
-        height: 24px;
-        cursor: pointer;
-        accent-color: #2c3e50;
-    }
-
-    /* Bouton de soumission */
-    .submit-btn {
-        width: 100%;
-        padding: 15px;
-        background-color: #3d4d5c;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        font-size: 1.1rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-    }
-
-    .submit-btn:hover {
-        background-color: #2c3e50;
-        transform: translateY(-2px);
-    }
-
-    .submit-btn:active {
-        transform: translateY(0);
-    }
-
-    /* Responsive */
-    @media (max-width: 500px) {
-        .form-container {
-            padding: 30px 20px;
-        }
-
-        .form-title {
-            font-size: 2.2rem;
-        }
-
-        .form-subtitle {
-            font-size: 1rem;
-        }
-
-      
+}
