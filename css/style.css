@@ -95,3 +95,28 @@ body {
     min-height: 100vh;
     padding: 60px 20px;
 }
+
+
+.submit-btn {
+    background-color: var(--yellow);
+    color: var(--blue-dark);
+    border: none;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 0 var(--orange);
+}
+
+.submit-btn:hover {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 var(--orange);
+}
+
+.submit-btn:active {
+    transform: translateY(8px);
+    box-shadow: 0 0 0 var(--orange);
+}
