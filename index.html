@@ -79,47 +79,48 @@
 </head>
 
 <body>
+    <<<<<<< HEAD=======>>>>>>> 0a4dec7edfd381eb7bdfc7a98a7a8ed28b3468d3
 
 
-    <!-- data-bind-global="count" : Affiche le nombre total de rapports (métadonnées globales) -->
-    <h1 data-bind-global="count"></h1>
+        <!-- data-bind-global="count" : Affiche le nombre total de rapports (métadonnées globales) -->
+        <h1 data-bind-global="count"></h1>
 
-    <!-- id="teamList" : Conteneur où seront ajoutés dynamiquement les éléments de l'équipe. Le nom de cet ID ne doit pas être modifié. -->
-    <section id="teamList">
-    </section>
+        <!-- id="teamList" : Conteneur où seront ajoutés dynamiquement les éléments de l'équipe. Le nom de cet ID ne doit pas être modifié. -->
+        <section id="teamList">
+        </section>
 
-    <!-- id="messageContainer" : Conteneur pour afficher les messages de succès ou d'erreur. Le nom de cet ID ne doit pas être modifié. -->
-    <div id="messageContainer"></div>
+        <!-- id="messageContainer" : Conteneur pour afficher les messages de succès ou d'erreur. Le nom de cet ID ne doit pas être modifié. -->
+        <div id="messageContainer"></div>
 
-    <!-- id="downloadForm" : Formulaire pour télécharger le PDF. Le nom de cet ID ne doit pas être modifié. -->
-    <form id="downloadForm">
-        <div class="form-container">
-            <h1 class="form-title">Formulaire</h1>
-            <p class="form-subtitle">Remplissez le formulaire ci-dessous pour accéder au téléchargement de l'audit
-                complet.</p>
-            <div class="form-group">
-                <label for="lastName">Nom</label>
-                <input type="text" id="lastName" name="lastName" required>
+        <!-- id="downloadForm" : Formulaire pour télécharger le PDF. Le nom de cet ID ne doit pas être modifié. -->
+        <form id="downloadForm">
+            <div class="form-container">
+                <h1 class="form-title">Formulaire</h1>
+                <p class="form-subtitle">Remplissez le formulaire ci-dessous pour accéder au téléchargement de l'audit
+                    complet.</p>
+                <div class="form-group">
+                    <label for="lastName">Nom</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">Prénom</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="checkbox-group">
+                    <label for="newsletter">J'accepte de recevoir la Newsletter</label>
+                    <input type="checkbox" id="newsletter" name="newsletterAgreement" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Télécharger l'audit</button>
             </div>
-
-            <div class="form-group">
-                <label for="firstName">Prénom</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="checkbox-group">
-                <label for="newsletter">J'accepte de recevoir la Newsletter</label>
-                <input type="checkbox" id="newsletter" name="newsletterAgreement" required>
-            </div>
-
-            <button type="submit" class="submit-btn">Télécharger l'audit</button>
-        </div>
-    </form>
+        </form>
 
 
 

@@ -109,6 +109,7 @@ body {
 }
 
 <<<<<<< HEAD
+
 /* Conteneur du formulaire */
 .form-container {
     background-color: #f4e76e;
@@ -230,29 +231,152 @@ body {
     .form-subtitle {
         font-size: 1rem;
     }
-=======
 
-.submit-btn {
-    background-color: var(--yellow);
-    color: var(--blue-dark);
-    border: none;
-    padding: 16px 32px;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 0 var(--orange);
-}
+    =======<<<<<<< HEAD .submit-btn {
+        background-color: var(--yellow);
+        color: var(--blue-dark);
+        border: none;
+        padding: 16px 32px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 0 var(--orange);
+    }
 
-.submit-btn:hover {
-    transform: translateY(4px);
-    box-shadow: 0 4px 0 var(--orange);
-}
+    .submit-btn:hover {
+        transform: translateY(4px);
+        box-shadow: 0 4px 0 var(--orange);
+    }
 
-.submit-btn:active {
-    transform: translateY(8px);
-    box-shadow: 0 0 0 var(--orange);
->>>>>>> 4d03ae134d997704c7c0a83b61fed62be73b05a5
-}
+    .submit-btn:active {
+        transform: translateY(8px);
+        box-shadow: 0 0 0 var(--orange);
+        >>>>>>>4d03ae134d997704c7c0a83b61fed62be73b05a5
+    }
+
+    =======>>>>>>>0a4dec7edfd381eb7bdfc7a98a7a8ed28b3468d3
+
+    /* Conteneur du formulaire */
+    .form-container {
+        background-color: #f4e76e;
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 500px;
+        width: 100%;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        margin: 0 auto;
+    }
+
+    /* Titre principal */
+    .form-title {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    /* Sous-titre */
+    .form-subtitle {
+        font-size: 1 rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+
+    /* Groupe de champs */
+    .form-group {
+        margin-right: 25px;
+        margin-top: 25px;
+    }
+
+    /* Labels */
+    .form-container label {
+        display: block;
+        font-size: 1 rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 8px;
+    }
+
+    /* Champs de texte et email */
+    .form-container input[type="text"],
+    .form-container input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.5);
+        font-size: 1rem;
+        transition: background-color 0.3s;
+    }
+
+    .form-container input[type="text"]:focus,
+    .form-container input[type="email"]:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Groupe checkbox */
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 30px 0;
+        gap: 10px;
+    }
+
+    .checkbox-group label {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0;
+        cursor: pointer;
+    }
+
+    .form-container input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        accent-color: #2c3e50;
+    }
+
+    /* Bouton de soumission */
+    .submit-btn {
+        width: 100%;
+        padding: 15px;
+        background-color: #3d4d5c;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .submit-btn:hover {
+        background-color: #2c3e50;
+        transform: translateY(-2px);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+        .form-container {
+            padding: 30px 20px;
+        }
+
+        .form-title {
+            font-size: 2.2rem;
+        }
+
+        .form-subtitle {
+            font-size: 1rem;
+        }
