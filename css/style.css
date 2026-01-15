@@ -108,6 +108,7 @@ body {
     padding: 60px 20px;
 }
 
+<<<<<<< HEAD
 /* Conteneur du formulaire */
 .form-container {
     background-color: #f4e76e;
@@ -229,4 +230,29 @@ body {
     .form-subtitle {
         font-size: 1rem;
     }
+=======
+
+.submit-btn {
+    background-color: var(--yellow);
+    color: var(--blue-dark);
+    border: none;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 0 var(--orange);
+}
+
+.submit-btn:hover {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 var(--orange);
+}
+
+.submit-btn:active {
+    transform: translateY(8px);
+    box-shadow: 0 0 0 var(--orange);
+>>>>>>> 4d03ae134d997704c7c0a83b61fed62be73b05a5
 }
