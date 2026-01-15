@@ -19,7 +19,7 @@ h1, h2, h3 {
     font-family: 'Agrandir-GrandHeavy', Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     letter-spacing: -0.02em; /* Souvent nécessaire pour les polices "Heavy" pour coller à Figma */
-}
+} 
 
 body {
     margin: 0;
