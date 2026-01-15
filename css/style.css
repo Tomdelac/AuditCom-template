@@ -1,3 +1,5 @@
+@import "reset.css";
+
 /* =========================================
    1. VARIABLES & CONFIGURATION
    ========================================= */
@@ -15,12 +17,6 @@
     font-weight: 900;
     font-style: normal;
 }
-    @import "reset.css";
-
-img {
-    width: 250px;
-}
-
 
 /* =========================================
    2. RESET & BASES
@@ -43,6 +39,14 @@ h1, h2, h3 {
     letter-spacing: -0.02em;
 }
 
+img {
+    width: 250px;
+}
+
+.hidden-img {
+    display: none;
+}
+
 /* =========================================
    3. ANIMATIONS
    ========================================= */
@@ -57,21 +61,30 @@ h1, h2, h3 {
     100% { opacity: 0.6; }
 }
 
-/* Animation douce pour les bulles */
 @keyframes gentleSway {
     0% { transform: rotate(-3deg); }
     50% { transform: rotate(3deg); }
     100% { transform: rotate(-3deg); }
 }
 
+@keyframes defilement {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* =========================================
-   4. COMPOSANTS (Boutons, Inputs)
+   4. COMPOSANTS (Boutons, Inputs, etc.)
    ========================================= */
 
-/* --- BOUTONS (Haut et Bas identiques) --- */
+/* --- BOUTONS --- */
 .main-cta, 
 .submit-btn {
-    background-color: var(--orange); /* Par défaut orange */
+    background-color: var(--orange);
     color: var(--white);
     text-decoration: none;
     font-family: 'Agrandir-GrandHeavy', sans-serif;
@@ -83,21 +96,19 @@ h1, h2, h3 {
     border: none;
     cursor: pointer;
     text-align: center;
-    
-    /* L'effet 3D (Fausse profondeur) */
     transition: all 0.1s ease;
     box-shadow: 0 6px 0 var(--blue-dark); 
     transform: translateY(0);
 }
 
-/* Spécifique pour le bouton du bas qui est bleu foncé */
+/* Spécifique pour le bouton du bas */
 .submit-btn {
     background-color: var(--blue-dark);
-    box-shadow: 0 6px 0 var(--orange); /* Ombre orange pour le bouton bleu */
-    width: 100%; /* Prend toute la largeur dans le form */
+    box-shadow: 0 6px 0 var(--orange);
+    width: 100%;
 }
 
-/* Interaction au survol (le bouton s'écrase un peu) */
+/* Interaction Hover */
 .main-cta:hover,
 .submit-btn:hover:not(:disabled) {
     transform: translateY(2px);
@@ -107,7 +118,7 @@ h1, h2, h3 {
     box-shadow: 0 4px 0 var(--orange);
 }
 
-/* Interaction au clic (le bouton s'enfonce) */
+/* Interaction Active */
 .main-cta:active,
 .submit-btn:active:not(:disabled) {
     transform: translateY(6px);
@@ -119,6 +130,62 @@ h1, h2, h3 {
     cursor: not-allowed;
 }
 
+/* --- BARRES DE PROGRESSION --- */
+.progress-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+progress {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #fff;
+}
+
+progress::-webkit-progress-value {
+    background-color: #F4E76E;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* --- MESSAGES D'ÉTAT --- */
+.message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message.loading {
+    background-color: #e3f2fd;
+    color: #0c5460;
+    border: 1px solid #b8daff;
+}
 
 /* =========================================
    5. SECTIONS
@@ -177,6 +244,165 @@ h1, h2, h3 {
     transform: translateX(-50%) translateY(10px);
 }
 
+/* --- BANDEAU DÉFILANT (MARQUEE) --- */
+
+
+.marquee-track {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: defilement 30s linear infinite;
+}
+
+.marquee-track img {
+    height: 40px; 
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+/* --- BANDEAU BLEU (HEADER TEAMS) --- */
+.teams-header-section {
+    background-color: var(--blue-dark);
+    padding-top: 60px;
+    padding-bottom: 40px; /* Ajoute un peu d'air sous le titre avant le jaune */
+    text-align: center;
+    position: relative;
+    /* On s'assure qu'il n'y a pas de marge qui pousse le contenu */
+    margin-bottom: 0; 
+}
+
+.teams-header-section h1 {
+    color: var(--yellow);
+    margin-bottom: 0; /* On retire la marge sous le titre pour qu'il soit centré dans sa bande */
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- LISTE ÉQUIPES (SECTION JAUNE) --- */
+.teams-list-section {
+    background-color: var(--yellow);
+    padding: 0 0 0px 0; 
+    min-height: auto; /* On laisse la hauteur s'adapter au contenu */
+}
+
+.list-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.list-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Agrandir-GrandHeavy', sans-serif;
+    color: var(--blue-dark);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--blue-dark);
+    margin-bottom: 20px;
+}
+
+/* Conteneur principal de la liste */
+#teamList {
+    background-color: var(--yellow);
+    padding: 60px 20px;
+    width: 100%;
+    margin-bottom: 160px;
+}
+
+/* Lignes du tableau (Base + Patch) */
+.team-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Valeur par défaut */
+    align-items: center;
+    padding: 25px 0;
+    position: relative;
+    color: var(--blue-dark);
+}
+
+/* Override spécifique pour le tableau propre (Grid 3 colonnes) */
+#teamList .team-row {
+    grid-template-columns: auto 1fr auto;
+    column-gap: 20px;
+}
+
+/* Ligne de séparation */
+.team-row::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    height: 1px;
+    background-color: #000000;
+    opacity: 0.3;
+}
+
+.team-row:last-child::after {
+    display: none;
+}
+
+/* Colonnes internes */
+#teamList .col-team {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#teamList .mini-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: none;
+}
+
+#teamList h3, 
+.col-team h3 {
+    font-size: 1.3rem; /* Consolidé */
+    margin: 0;
+    font-family: 'Agrandir-GrandHeavy', sans-serif;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+#teamList .col-author,
+.col-author {
+    text-align: right;
+    white-space: nowrap;
+    font-size: 0.95rem;
+}
+
+.col-author p {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Grille cartes (si utilisée ailleurs) */
+.team-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+.team-item {
+    background-color: var(--white);
+    border-radius: 30px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 8px 8px 0 var(--blue-dark);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
 /* --- SECTION STATS (INFOS BULLES) --- */
 #stats-section {
     padding: 80px 20px;
@@ -188,7 +414,7 @@ h1, h2, h3 {
 
 .cta-wrapper {
     margin-bottom: 60px;
-    padding: 10px; /* Pour éviter de couper l'ombre */
+    padding: 10px;
 }
 
 .section-title {
@@ -217,7 +443,6 @@ h1, h2, h3 {
     flex-direction: row-reverse;
 }
 
-/* --- LE ROND JAUNE (BULLE) --- */
 .stat-number {
     background-color: var(--yellow);
     width: 180px;
@@ -235,11 +460,7 @@ h1, h2, h3 {
     line-height: 1;
     z-index: 2;
     flex-shrink: 0;
-    
-    /* MODIF : Ombre portée solide pour le style POP */
     box-shadow: 6px 6px 0 var(--blue-dark);
-    
-    /* MODIF : Animation d'oscillation */
     animation: gentleSway 4s ease-in-out infinite;
     transform-origin: center bottom;
 }
@@ -250,7 +471,6 @@ h1, h2, h3 {
     margin-top: 5px;
 }
 
-/* L'info bulle (Texte) */
 .stat-text {
     background-color: var(--blue-dark);
     color: var(--white);
@@ -289,57 +509,29 @@ h1, h2, h3 {
     margin-bottom: 10px;
 }
 
-/* --- SECTION ÉQUIPES --- */
-#teamList {
-    background-color: var(--yellow);
-    padding: 60px 20px;
-    width: 100%;
-      margin-bottom: 160px;
-}
-
-.team-grid {
-  max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 40px;}
-
-.team-item {
-   background-color: var(--white);
-    border-radius: 30px;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 8px 8px 0 var(--blue-dark);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-
-
-
-
-/* --- SECTION FORMULAIRE (CORRIGÉE) --- */
+/* --- SECTION FORMULAIRE --- */
 .form-section {
-    padding: 120px 20px; /* Plus d'espace en haut/bas */
+    padding: 120px 20px;
     background-color: var(--blue-light);
 }
+
 #downloadForm {
-    margin: 160px auto 180px auto; /* GROS espace haut / bas */
+    margin: 160px auto 180px auto;
     padding: 0 20px;
 }
+
 .form-container {
     background-color: var(--yellow);
-    border-radius: 30px; /* Coins plus arrondis */
-    padding: 60px 50px; /* Plus d'espace intérieur */
-    max-width: 600px; /* Un peu plus large pour respirer */
+    border-radius: 30px;
+    padding: 60px 50px;
+    max-width: 600px;
     width: 100%;
-    /* Ombre sous le formulaire pour le détacher du fond bleu */
     box-shadow: 0 15px 0 rgba(0,0,0,0.1); 
     margin: 0 auto;
 }
 
-/* Titre du formulaire */
 .form-title {
-    font-family: 'Agrandir-GrandHeavy', sans-serif; /* Force la grosse police */
+    font-family: 'Agrandir-GrandHeavy', sans-serif;
     font-size: 3rem;
     color: var(--blue-dark);
     margin-bottom: 15px;
@@ -361,35 +553,36 @@ h1, h2, h3 {
 
 .form-group label {
     display: block;
-    font-weight: 800; /* Plus gras */
+    font-weight: 800;
     margin-bottom: 10px;
     color: var(--blue-dark);
     font-size: 1rem;
     text-transform: uppercase;
 }
 
-/* INPUTS : Style "Pilule" Blanche */
+/* Inputs */
 .form-container input[type="text"],
 .form-container input[type="email"] {
     width: 100%;
-    padding: 15px 25px; /* Confortable */
-    border: 3px solid transparent; /* Prépare le focus */
-    border-radius: 50px; /* Forme de pilule comme les boutons */
-    background-color: var(--white); /* BLANC pour contraster avec le jaune */
+    padding: 15px 25px;
+    border: 3px solid transparent;
+    border-radius: 50px;
+    background-color: var(--white);
     box-sizing: border-box;
     font-size: 1rem;
     color: var(--blue-dark);
     font-weight: bold;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); /* Légère profondeur intérieure */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
 }
 
 .form-container input:focus {
     outline: none;
-    border-color: var(--orange); /* Bordure orange au clic */
+    border-color: var(--orange);
     background-color: #fff;
 }
 
+/* Checkbox */
 .checkbox-group {
     display: flex;
     align-items: center;
@@ -398,7 +591,7 @@ h1, h2, h3 {
 }
 
 .checkbox-group input[type="checkbox"] {
-    transform: scale(1.5); /* Checkbox plus grosse */
+    transform: scale(1.5);
     cursor: pointer;
     accent-color: var(--blue-dark);
 }
@@ -408,45 +601,6 @@ h1, h2, h3 {
     color: var(--blue-dark);
     cursor: pointer;
 }
-
-/* Messages & Progress */
-#messageContainer {
-    text-align: center;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 500px;
-    border-radius: 10px;
-    display: none;
-    font-weight: bold;
-}
-#messageContainer.success { background-color: #4caf50; color: white; }
-#messageContainer.error { background-color: #f44336; color: white; }
-
-#progressContainer {
-    display: none;
-    width: 100%;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    margin: 20px 0;
-    overflow: hidden;
-}
-#progressContainer.active { display: block; }
-#progressBar {
-    height: 100%;
-    background: var(--blue-dark);
-    border-radius: 10px;
-    width: 0%;
-    transition: width 0.3s ease;
-}
-#progressText {
-    display: none;
-    text-align: center;
-    color: var(--blue-dark);
-    font-weight: 800;
-    margin-top: 10px;
-}
-#progressText.active { display: block; }
 
 /* --- FOOTER --- */
 .footer {
@@ -475,14 +629,21 @@ h1, h2, h3 {
     opacity: 0.9;
 }
 
-.footer-section ul { list-style: none; }
-.footer-section ul li { margin-bottom: 12px; }
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
 .footer-section ul li a {
     color: var(--white);
     text-decoration: none;
     opacity: 0.8;
     transition: opacity 0.3s ease;
 }
+
 .footer-section ul li a:hover {
     opacity: 1;
     color: var(--yellow);
@@ -500,11 +661,26 @@ h1, h2, h3 {
    6. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
+    /* Hero */
     .hero h1 { font-size: 1.8rem; }
     .spinning-ball { width: 150px; }
+    
+    /* Titres génériques */
     .section-title { font-size: 1.5rem; margin-bottom: 40px; }
     
-    /* Stats mobile */
+    /* Liste équipes */
+    .list-header, .team-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .list-header { display: none; }
+    .team-row {
+        text-align: center;
+        padding: 30px 0;
+    }
+    .col-team h3 { font-size: 1.5rem; margin-bottom: 5px; }
+
+    /* Stats */
     .stat-card, .stat-card.reverse {
         flex-direction: column;
         align-items: center;
@@ -519,7 +695,7 @@ h1, h2, h3 {
         padding: 25px 20px; text-align: center;
     }
     
-    /* Form mobile */
+    /* Form */
     .form-section { padding: 80px 20px; }
     .form-container { padding: 40px 20px; }
     .form-title { font-size: 2rem; }

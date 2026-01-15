@@ -3,6 +3,11 @@
 
 <head>
 
+
+
+</head>
+
+<body>
     <header class="hero">
         <div class="hero-content">
             <h1>Audit digital des clubs de football suisses romands : <br>
@@ -74,11 +79,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="src/main.js" type="module" defer></script>
-
-</head>
-
-<body>
-
   
 <section id="stats-section">
     <div class="cta-wrapper">
@@ -138,48 +138,70 @@
 </section>
 </div>
 
+
+
+
+</section>
+
+
+<div class="teams-header-section">
+    <h1>Liste des équipes analysées</h1>
+    
+    <div class="marquee-wrapper">
+        <div class="marquee-track" id="logoMarquee"></div>
+    </div>
+</div>
+
+<section class="teams-list-section">
+   
+        <div class="list-header">
+            <span>Équipe</span>
+            <span>Auteurs</span>
+        </div>
+
+        <div id="teamList" class="list-content"></div>
+    </div>
+</section>
+
     <!-- id="teamList" : Conteneur où seront ajoutés dynamiquement les éléments de l'équipe. Le nom de cet ID ne doit pas être modifié. -->
-    <section id="teamList"></section>
-    </section>
+
+    
 
     <!-- id="messageContainer" : Conteneur pour afficher les messages de succès ou d'erreur. Le nom de cet ID ne doit pas être modifié. -->
     <div id="messageContainer"></div>
 
     <!-- id="downloadForm" : Formulaire pour télécharger le PDF. Le nom de cet ID ne doit pas être modifié. -->
-    <form id="downloadForm">
-        <div class="form-container">
-            <h1 class="form-title">Formulaire</h1>
-            <p class="form-subtitle">Remplissez le formulaire ci-dessous pour accéder au téléchargement de l'audit
-                complet.</p>
-            <div class="form-group">
-                <label for="lastName">Nom</label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
-
-            <div class="form-group">
-                <label for="firstName">Prénom</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="checkbox-group">
-                <label for="newsletter">J'accepte de recevoir la Newsletter</label>
-                <input type="checkbox" id="newsletter" name="newsletterAgreement" required>
-            </div>
-<div id="progressContainer">
-    <div id="progressBar"></div>
-</div>
-
-            <button type="submit" class="submit-btn">Télécharger l'audit</button>
-       <div id="progressText">Préparation du téléchargement...</div>
-     </div>
+   <form id="downloadForm">
+    <div class="form-container">
+        <h1 class="form-title">Formulaire</h1>
+        <p class="form-subtitle">Remplissez le formulaire ci-dessous pour accéder au téléchargement.</p>
         
-    </form>
+        <div class="form-group">
+            <label for="lastName">Nom</label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
 
+        <div class="form-group">
+            <label for="firstName">Prénom</label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="checkbox-group">
+            <label for="newsletter">J'accepte de recevoir la Newsletter</label>
+            <input type="checkbox" id="newsletter" name="newsletterAgreement" required>
+        </div>
+
+        <button type="submit" class="submit-btn">Télécharger l'audit</button>
+        
+        <div id="messageContainer"></div>
+        
+    </div>
+</form>
 
 
 
