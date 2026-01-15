@@ -7,6 +7,14 @@
     --white: #ffffff;
 
 }
+h1,
+h2,
+h3 {
+    font-family: 'Agrandir-GrandHeavy', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    /* Souvent nécessaire pour les polices "Heavy" pour coller à Figma */
+}
 
 @font-face {
     font-family: 'Agrandir-GrandHeavy';
@@ -16,14 +24,7 @@
     font-style: normal;
 }
 
-h1,
-h2,
-h3 {
-    font-family: 'Agrandir-GrandHeavy', Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    /* Souvent nécessaire pour les polices "Heavy" pour coller à Figma */
-}
+
 
 body {
     margin: 0;
@@ -62,6 +63,8 @@ body {
     color: var(--white);
 }
 
+
+
 /* --- ANIMATION DU BALLON --- */
 .ballon-wrapper {
     margin: 40px 0;
@@ -87,6 +90,116 @@ body {
         transform: rotate(360deg);
     }
 }
+
+
+  /* --- SECTION STATS --- */
+#stats-section {
+    background-color: var(--blue-light);
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-wrapper {
+    margin-bottom: 80px;
+}
+
+.main-cta {
+    background-color: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Agrandir-GrandHeavy', sans-serif;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.main-cta:hover {
+    transform: scale(1.05);
+}
+
+.stats-container {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.section-title {
+    color: var(--blue-dark);
+    margin-bottom: 50px;
+}
+
+/* Bulles d'infos */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stat-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.stat-number {
+    background-color: var(--yellow);
+    width: 180px;
+    height: 180px;
+    min-width: 180px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Agrandir-GrandHeavy', sans-serif;
+    font-size: 3rem;
+    color: var(--blue-dark);
+    text-align: center;
+    line-height: 1;
+}
+
+.stat-number span {
+    font-size: 1rem;
+    display: block;
+}
+
+.stat-text {
+    background-color: var(--blue-dark);
+    color: var(--white);
+    padding: 30px;
+    border-radius: 30px;
+    flex-grow: 1;
+}
+
+.stat-text p {
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+
+.stat-text strong {
+    color: var(--yellow);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* Responsive pour Mobile */
+@media (max-width: 768px) {
+    .stat-card, .stat-card.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .stat-number {
+        width: 140px;
+        height: 140px;
+        min-width: 140px;
+        font-size: 2rem;
+    }
+    
+
 
 /* --- LE TRIANGLE (SCROLL) --- */
 .scroll-trigger {
@@ -232,7 +345,7 @@ body {
         font-size: 1rem;
     }
 
-    =======<<<<<<< HEAD .submit-btn {
+    HEAD .submit-btn {
         background-color: var(--yellow);
         color: var(--blue-dark);
         border: none;
@@ -254,7 +367,7 @@ body {
     .submit-btn:active {
         transform: translateY(8px);
         box-shadow: 0 0 0 var(--orange);
-        >>>>>>>4d03ae134d997704c7c0a83b61fed62be73b05a5
+       
     }
 
     
@@ -380,3 +493,5 @@ body {
         .form-subtitle {
             font-size: 1rem;
         }
+
+      
