@@ -5,11 +5,80 @@
     --blue-dark: #373f51;
     --orange: #FF5E3A;
     --white: #ffffff;
+    
 }
 
 body {
     margin: 0;
     font-family: 'Helvetica', Arial, sans-serif;
     background-color: var(--blue-light);
-    color: var(--blue-dark);
+    color: var(--blue-dark); 
+}
+
+
+.hero {
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    background-color: var(--blue-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 900px;
+    padding: 20px;
+}
+
+.hero h1 {
+    color: var(--yellow);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--white);
+}
+
+/* --- ANIMATION DU BALLON --- */
+.ballon-wrapper {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center; /* Aligne le contenu à droite du conteneur */
+  /*  padding-right: 10%;        /* Ajuste ce pourcentage pour plus ou moins de décalage */
+}
+
+.spinning-ball {
+    width: 200px; /* Ajuste la taille selon ton besoin */
+    height: auto;
+    animation: rotateBall 10s linear infinite;
+}
+
+@keyframes rotateBall {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- LE TRIANGLE (SCROLL) --- */
+.scroll-trigger {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.scroll-trigger:hover {
+    transform: translateX(-50%) translateY(10px);
+}
+
+/* --- SECTION SUIVANTE --- */
+#stats-section {
+    min-height: 100vh;
+    padding: 60px 20px;
 }
