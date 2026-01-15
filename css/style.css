@@ -15,6 +15,12 @@
     font-weight: 900;
     font-style: normal;
 }
+    @import "reset.css";
+
+img {
+    width: 250px;
+}
+
 
 /* =========================================
    2. RESET & BASES
