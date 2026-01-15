@@ -5,11 +5,12 @@
     --blue-dark: #373f51;
     --orange: #FF5E3A;
     --white: #ffffff;
+    
 }
 
 body {
     margin: 0;
     font-family: 'Helvetica', Arial, sans-serif;
     background-color: var(--blue-light);
-    color: var(--blue-dark);
+    color: var(--blue-dark); 
 }
