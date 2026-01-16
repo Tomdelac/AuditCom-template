@@ -167,7 +167,7 @@
                 <ul>
                     <li><a href="#stats-section">Statistiques</a></li>
                     <li><a href="#teamList">Équipes</a></li>
-                    <li><a href="#downloadForm">Télécharger</a></li>
+                    <li>A<a href="#downloadForm">Télécharger</a></li>
                 </ul>
             </div>
         </div>
@@ -177,5 +177,34 @@
     </footer>
 
     <script src="src/main.js" type="module" defer></script>
+    <script>
+// Je ne sais pas si le JS est interdit, j'ai compris qu'il ne fallait pas modifier le js des fichiers de bases mais en me renseignant auprès de mes camarades le js est ok si il est intégré ailleurs.
+
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        let scrollTimer;
+        const bubbles = document.querySelectorAll('.stat-number');
+
+        window.addEventListener('scroll', function() {
+            
+            // 1. Dès qu'on détecte un mouvement, on active l'animation sur TOUTES les bulles
+            bubbles.forEach(bubble => {
+                bubble.classList.add('active');
+            });
+
+            // 2. On efface le timer précédent (on "reset" le compte à rebours)
+            window.clearTimeout(scrollTimer);
+
+            // 3. On définit un nouveau timer de fin
+            // Si aucun scroll n'est détecté pendant 150ms, on considère que le scroll est fini
+            scrollTimer = setTimeout(function() {
+                bubbles.forEach(bubble => {
+                    bubble.classList.remove('active');
+                });
+            }, 150); // Tu peux augmenter ce chiffre (ex: 250) si tu veux que l'animation dure un peu plus longtemps après l'arrêt
+            
+        }, false);
+    });
+</script>
 </body>
 </html>

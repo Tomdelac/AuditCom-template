@@ -286,10 +286,9 @@ progress::-webkit-progress-value {
 /* --- LISTE ÉQUIPES (SECTION JAUNE) --- */
 .teams-list-section {
     background-color: var(--yellow);
-    padding: 0 0 0px 0; 
-    min-height: auto; /* On laisse la hauteur s'adapter au contenu */
+    padding: 0;
+    width: 100%;
 }
-
 .list-container {
     max-width: 900px;
     margin: 0 auto;
@@ -313,7 +312,8 @@ progress::-webkit-progress-value {
     background-color: var(--yellow);
     padding: 60px 20px;
     width: 100%;
-    margin-bottom: 160px;
+    max-width: 800px; /* Contrôle la largeur du tableau */
+    margin: 0 auto 100px auto; /* Centre le bloc horizontalement */
 }
 
 /* Lignes du tableau (Base + Patch) */
@@ -363,6 +363,14 @@ progress::-webkit-progress-value {
     filter: none;
 }
 
+#teamList img, 
+.mini-logo {
+    width: 55px !important; 
+    height: 55px !important;
+    object-fit: contain;
+    display: block;
+}
+
 #teamList h3, 
 .col-team h3 {
     font-size: 1.3rem; /* Consolidé */
@@ -377,6 +385,14 @@ progress::-webkit-progress-value {
     text-align: right;
     white-space: nowrap;
     font-size: 0.95rem;
+}
+
+#teamList img, 
+.mini-logo {
+    width: 50px !important; /* !important force la taille contre la règle globale */
+    height: 50px !important;
+    object-fit: contain;
+    display: block;
 }
 
 .col-author p {
@@ -444,6 +460,7 @@ progress::-webkit-progress-value {
     flex-direction: row-reverse;
 }
 
+/* --- Modifie ce bloc existant --- */
 .stat-number {
     background-color: var(--yellow);
     width: 180px;
@@ -462,8 +479,20 @@ progress::-webkit-progress-value {
     z-index: 2;
     flex-shrink: 0;
     box-shadow: 6px 6px 0 var(--blue-dark);
-    animation: gentleSway 4s ease-in-out infinite;
     transform-origin: center bottom;
+    
+    /* ⚠️ J'AI SUPPRIMÉ L'ANIMATION ICI */
+    /* On ajoute une transition pour que le démarrage soit fluide */
+    transition: transform 1s ease-out; 
+}
+.stat-number.active {
+    animation: gentleSway 4s ease-in-out infinite;
+}
+
+/* --- Ajoute ce nouveau bloc juste en dessous --- */
+/* C'est cette classe que le JS va ajouter quand on scrolle */
+.stat-number.active {
+    animation: gentleSway 4s ease-in-out infinite;
 }
 
 .stat-number span {
@@ -675,12 +704,29 @@ progress::-webkit-progress-value {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    .list-header { display: none; }
-    .team-row {
-        text-align: center;
-        padding: 30px 0;
+ .list-header {
+    display: grid;
+    grid-template-columns: 1fr auto; /* L'auteur est collé à droite */
+    font-family: 'Agrandir-GrandHeavy', sans-serif;
+    color: var(--blue-dark);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--blue-dark);
+    margin-bottom: 20px;
+}
+  .team-row {
+        display: flex;
+        flex-direction: column; /* Empile les éléments */
+        justify-content: center;
+        align-items: center;    /* Centre horizontalement */
+        text-align: center;     /* Centre le texte */
+        padding: 30px 0;        /* Un peu plus d'espace entre chaque équipe */
+        gap: 10px;
     }
-    .col-team h3 { font-size: 1.5rem; margin-bottom: 5px; }
+   col-team h3 {
+        font-size: 1.5rem;
+    }
 
     /* Stats */
     .stat-card, .stat-card.reverse {
@@ -701,6 +747,50 @@ progress::-webkit-progress-value {
     .form-section { padding: 80px 20px; }
     .form-container { padding: 40px 20px; }
     .form-title { font-size: 2rem; }
+
+
+
+@media (max-width: 768px) {
+    
+    /* 1. On cache l'en-tête du tableau sur mobile */
+    .list-header {
+        display: none;
+    }
+
+    /* 2. On change la disposition de la ligne */
+    .team-row {
+        display: flex;       /* Passe en Flexbox pour empiler verticalement */
+        flex-direction: column;
+        align-items: flex-start; /* Aligne tout à gauche */
+        text-align: left;
+        padding: 20px 0;
+        gap: 5px; /* Petit espace entre le nom de l'équipe et l'auteur */
+    }
+
+    /* 3. On cache le logo (première colonne ou image directe) */
+    .team-row img,
+    .mini-logo {
+        display: none !important;
+    }
+
+    /* 4. Ajustements de texte */
+    .col-team h3 {
+        font-size: 1.3rem;
+        margin-bottom: 2px;
+    }
+
+    .col-author {
+        text-align: center; /* On force l'alignement au centre */
+        width: 100%;
+        opacity: 0.9;
+    }
+
+    
+    .col-author p {
+        font-size: 0.9rem;
+        font-weight: normal;
+    }
+}
 
 
 /* ===========================
