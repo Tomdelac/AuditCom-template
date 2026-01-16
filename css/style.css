@@ -99,6 +99,7 @@ img {
     transition: all 0.1s ease;
     box-shadow: 0 6px 0 var(--blue-dark); 
     transform: translateY(0);
+     margin-bottom: 1rem;
 }
 
 /* Spécifique pour le bouton du bas */
@@ -150,7 +151,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-    background-color: #F4E76E;
+    background-color: (--blue-dark);
     transition: width 0.3s ease;
 }
 
@@ -588,6 +589,7 @@ progress::-webkit-progress-value {
     align-items: center;
     gap: 15px;
     margin: 30px 0 40px 0;
+   
 }
 
 .checkbox-group input[type="checkbox"] {
@@ -699,4 +701,42 @@ progress::-webkit-progress-value {
     .form-section { padding: 80px 20px; }
     .form-container { padding: 40px 20px; }
     .form-title { font-size: 2rem; }
+
+
+/* ===========================
+   FORM STATES – CSS ONLY
+   =========================== */
+
+.form-status .message {
+    display: none;
+}
+
+/* ❌ Erreur si formulaire invalide après tentative */
+#downloadForm:has(button[type="submit"]:focus):invalid .message.error {
+    display: block;
+}
+
+/* ⏳ Loading pendant soumission */
+#downloadForm:valid:has(button[type="submit"]:active) .message.loading {
+    display: block;
+}
+
+/* ✅ Success après validation */
+#downloadForm:valid:not(:has(button[type="submit"]:active)) .message.success {
+    display: block;
+}
+
+/* Progress bar animée (cosmétique) */
+.message.loading progress {
+    animation: fakeProgress 2s linear forwards;
+}
+
+@keyframes fakeProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+
+
+
 }
