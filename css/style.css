@@ -18,6 +18,10 @@
     font-style: normal;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* =========================================
    2. RESET & BASES
    ========================================= */
@@ -99,7 +103,7 @@ img {
     transition: all 0.1s ease;
     box-shadow: 0 6px 0 var(--blue-dark); 
     transform: translateY(0);
-     margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* Spécifique pour le bouton du bas */
@@ -246,8 +250,6 @@ progress::-webkit-progress-value {
 }
 
 /* --- BANDEAU DÉFILANT (MARQUEE) --- */
-
-
 .marquee-track {
     display: flex;
     gap: 4rem;
@@ -267,16 +269,15 @@ progress::-webkit-progress-value {
 .teams-header-section {
     background-color: var(--blue-dark);
     padding-top: 60px;
-    padding-bottom: 40px; /* Ajoute un peu d'air sous le titre avant le jaune */
+    padding-bottom: 40px;
     text-align: center;
     position: relative;
-    /* On s'assure qu'il n'y a pas de marge qui pousse le contenu */
     margin-bottom: 0; 
 }
 
 .teams-header-section h1 {
     color: var(--yellow);
-    margin-bottom: 0; /* On retire la marge sous le titre pour qu'il soit centré dans sa bande */
+    margin-bottom: 0;
     font-size: 2.5rem;
     text-transform: uppercase;
     position: relative;
@@ -312,14 +313,14 @@ progress::-webkit-progress-value {
     background-color: var(--yellow);
     padding: 60px 20px;
     width: 100%;
-    max-width: 800px; /* Contrôle la largeur du tableau */
-    margin: 0 auto 100px auto; /* Centre le bloc horizontalement */
+    max-width: 800px;
+    margin: 0 auto 100px auto;
 }
 
-/* Lignes du tableau (Base + Patch) */
+/* Lignes du tableau */
 .team-row {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Valeur par défaut */
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 25px 0;
     position: relative;
@@ -330,6 +331,8 @@ progress::-webkit-progress-value {
 #teamList .team-row {
     grid-template-columns: auto 1fr auto;
     column-gap: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 /* Ligne de séparation */
@@ -373,7 +376,7 @@ progress::-webkit-progress-value {
 
 #teamList h3, 
 .col-team h3 {
-    font-size: 1.3rem; /* Consolidé */
+    font-size: 1.3rem;
     margin: 0;
     font-family: 'Agrandir-GrandHeavy', sans-serif;
     white-space: nowrap;
@@ -389,7 +392,7 @@ progress::-webkit-progress-value {
 
 #teamList img, 
 .mini-logo {
-    width: 50px !important; /* !important force la taille contre la règle globale */
+    width: 50px !important;
     height: 50px !important;
     object-fit: contain;
     display: block;
@@ -460,7 +463,7 @@ progress::-webkit-progress-value {
     flex-direction: row-reverse;
 }
 
-/* --- Modifie ce bloc existant --- */
+/* Bulle chiffre */
 .stat-number {
     background-color: var(--yellow);
     width: 180px;
@@ -480,17 +483,10 @@ progress::-webkit-progress-value {
     flex-shrink: 0;
     box-shadow: 6px 6px 0 var(--blue-dark);
     transform-origin: center bottom;
-    
-    /* ⚠️ J'AI SUPPRIMÉ L'ANIMATION ICI */
-    /* On ajoute une transition pour que le démarrage soit fluide */
     transition: transform 1s ease-out; 
 }
-.stat-number.active {
-    animation: gentleSway 4s ease-in-out infinite;
-}
 
-/* --- Ajoute ce nouveau bloc juste en dessous --- */
-/* C'est cette classe que le JS va ajouter quand on scrolle */
+/* Animation déclenchée par JS */
 .stat-number.active {
     animation: gentleSway 4s ease-in-out infinite;
 }
@@ -618,7 +614,6 @@ progress::-webkit-progress-value {
     align-items: center;
     gap: 15px;
     margin: 30px 0 40px 0;
-   
 }
 
 .checkbox-group input[type="checkbox"] {
@@ -692,105 +687,96 @@ progress::-webkit-progress-value {
    6. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-    /* Hero */
+
+    /* --- HERO --- */
     .hero h1 { font-size: 1.8rem; }
     .spinning-ball { width: 150px; }
     
-    /* Titres génériques */
+    /* --- TITRES --- */
     .section-title { font-size: 1.5rem; margin-bottom: 40px; }
+    h2 { font-size: 1.3rem; line-height: 1.3; margin-bottom: 20px; }
     
-    /* Liste équipes */
-    .list-header, .team-row {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
- .list-header {
-    display: grid;
-    grid-template-columns: 1fr auto; /* L'auteur est collé à droite */
-    font-family: 'Agrandir-GrandHeavy', sans-serif;
-    color: var(--blue-dark);
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    padding-bottom: 20px;
-    border-bottom: 3px solid var(--blue-dark);
-    margin-bottom: 20px;
-}
-  .team-row {
+    /* --- LISTE ÉQUIPES --- */
+    .list-header { display: none; }
+
+    #teamList .team-row {
         display: flex;
-        flex-direction: column; /* Empile les éléments */
+        flex-direction: column; 
         justify-content: center;
-        align-items: center;    /* Centre horizontalement */
-        text-align: center;     /* Centre le texte */
-        padding: 30px 0;        /* Un peu plus d'espace entre chaque équipe */
-        gap: 10px;
-    }
-   col-team h3 {
-        font-size: 1.5rem;
+        align-items: center;    
+        text-align: center;     
+        padding: 25px 15px;     
+        gap: 8px;               
     }
 
-    /* Stats */
+    #teamList .col-team {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;    
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Images */
+    #teamList .team-row img,
+    #teamList .mini-logo {
+        display: block !important;
+        width: 50px !important;    
+        height: 50px !important;
+        margin: 0 auto 10px auto;  
+        object-fit: contain;
+    }
+
+    /* Titre club */
+    #teamList h3, 
+    .col-team h3 {
+        font-size: 1.1rem;         
+        line-height: 1.2;
+        margin: 0;
+        white-space: normal;       
+        overflow-wrap: break-word; 
+        width: 100%;
+    }
+
+    #teamList .team-row img,
+    #teamList .mini-logo {
+        display: none !important; /* L'image disparaît complètement */
+    }
+
+    /* Auteurs */
+    .col-author {
+     display: none;          
+    }
+  
+
+    /* --- STATS (Blocs Infos Bulles - RÉPARÉ) --- */
     .stat-card, .stat-card.reverse {
         flex-direction: column;
         align-items: center;
         margin-bottom: 50px;
     }
+
     .stat-number {
-        width: 150px; height: 150px; min-width: 150px;
-        font-size: 2.5rem; margin-bottom: 20px;
+        width: 150px; 
+        height: 150px; 
+        min-width: 150px;
+        font-size: 2.5rem; 
+        margin-bottom: 20px;
     }
+
     .stat-text {
-        width: 100%; margin: 0 !important;
-        padding: 25px 20px; text-align: center;
+        width: 100%; 
+        margin: 0 !important; 
+        padding: 25px 20px; 
+        text-align: center;
     }
     
-    /* Form */
+    /* --- FORMULAIRE --- */
     .form-section { padding: 80px 20px; }
     .form-container { padding: 40px 20px; }
     .form-title { font-size: 2rem; }
 
-
-
-@media (max-width: 768px) {
-    
-    /* 1. On cache l'en-tête du tableau sur mobile */
-    .list-header {
-        display: none;
-    }
-
-    /* 2. On change la disposition de la ligne */
-    .team-row {
-        display: flex;       /* Passe en Flexbox pour empiler verticalement */
-        flex-direction: column;
-        align-items: flex-start; /* Aligne tout à gauche */
-        text-align: left;
-        padding: 20px 0;
-        gap: 5px; /* Petit espace entre le nom de l'équipe et l'auteur */
-    }
-
-    /* 3. On cache le logo (première colonne ou image directe) */
-    .team-row img,
-    .mini-logo {
-        display: none !important;
-    }
-
-    /* 4. Ajustements de texte */
-    .col-team h3 {
-        font-size: 1.3rem;
-        margin-bottom: 2px;
-    }
-
-    .col-author {
-        text-align: center; /* On force l'alignement au centre */
-        width: 100%;
-        opacity: 0.9;
-    }
-
-    
-    .col-author p {
-        font-size: 0.9rem;
-        font-weight: normal;
-    }
-}
+} /* Fin de la media query */
 
 
 /* ===========================
@@ -824,9 +810,4 @@ progress::-webkit-progress-value {
 @keyframes fakeProgress {
     from { width: 0%; }
     to { width: 100%; }
-}
-
-
-
-
 }
